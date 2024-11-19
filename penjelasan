@@ -1,0 +1,135 @@
+Kode Program PHP
+Header dan Struktur HTML
+php
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Input PHP</title>
+</head>
+<body>
+    <h1>Form Input Data</h1>
+    <form method="POST" action="">
+HTML Struktur Dasar: Menyediakan kerangka kerja untuk form input.
+Tag <form>: Digunakan untuk mengirimkan data input ke server menggunakan metode POST.
+Input Form
+php
+Copy code
+<label for="name">Nama:</label>
+<input type="text" id="name" name="name" required><br><br>
+
+<label for="birthdate">Tanggal Lahir:</label>
+<input type="date" id="birthdate" name="birthdate" required><br><br>
+
+<label for="job">Pekerjaan:</label>
+<select id="job" name="job" required>
+    <option value="Programmer">Programmer</option>
+    <option value="Desainer">Desainer</option>
+    <option value="Manajer">Manajer</option>
+</select><br><br>
+
+<input type="submit" value="Submit">
+Input Fields:
+Nama: Field teks biasa (<input type="text">).
+Tanggal Lahir: Field untuk tanggal (<input type="date">).
+Pekerjaan: Dropdown untuk memilih pekerjaan (<select>).
+required: Mewajibkan pengguna untuk mengisi data sebelum mengirimkan formulir.
+PHP: Pengolahan Data
+php
+Copy code
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $birthdate = $_POST['birthdate'];
+    $job = $_POST['job'];
+$_POST: Array PHP yang digunakan untuk mengambil data dari formulir.
+$_SERVER["REQUEST_METHOD"]: Memastikan formulir hanya diproses jika metode pengiriman adalah POST.
+Menghitung Umur
+php
+Copy code
+$birthDateObj = new DateTime($birthdate);
+$today = new DateTime();
+$age = $today->diff($birthDateObj)->y;
+DateTime: Objek untuk manipulasi tanggal.
+diff(): Menghitung selisih antara dua tanggal untuk mendapatkan usia.
+Menentukan Gaji Berdasarkan Pekerjaan
+php
+Copy code
+switch ($job) {
+    case "Programmer":
+        $salary = 8000000;
+        break;
+    case "Desainer":
+        $salary = 6000000;
+        break;
+    case "Manajer":
+        $salary = 12000000;
+        break;
+}
+switch: Struktur kondisi untuk menetapkan gaji sesuai pekerjaan.
+Output Data
+php
+Copy code
+echo "<h2>Hasil Input:</h2>";
+echo "Nama: $name<br>";
+echo "Tanggal Lahir: $birthdate<br>";
+echo "Umur: $age tahun<br>";
+echo "Pekerjaan: $job<br>";
+echo "Gaji: Rp " . number_format($salary, 0, ',', '.') . "<br>";
+Menampilkan data hasil input, umur, dan gaji dalam format yang rapi.
+Konfigurasi XAMPP
+Apache dan MySQL
+Apache: Server web untuk menjalankan PHP.
+MySQL: Database server jika aplikasi memerlukan penyimpanan data.
+Menjalankan Web Server
+Pastikan Apache dan MySQL aktif pada panel kontrol XAMPP.
+Uji Web Server
+Letakkan file PHP ke dalam folder htdocs.
+Akses melalui browser dengan alamat http://localhost/nama_file.php.
+Konsep Dasar PHP
+Variabel
+php
+Copy code
+$variabel_name = "Nilai";
+Variabel digunakan untuk menyimpan nilai.
+Diawali tanda $.
+Predefined Variables
+Contoh: $_POST, $_GET, $_SERVER, dll.
+Berfungsi untuk menangani data bawaan dari server atau pengguna.
+Operator
+Aritmatika: +, -, *, /, %.
+Perbandingan: ==, !=, <, >, <=, >=.
+Logika: &&, ||, !.
+Kondisi
+If
+php
+Copy code
+if ($umur > 18) {
+    echo "Dewasa";
+}
+Mengevaluasi ekspresi dan menjalankan kode jika bernilai true.
+Switch
+Digunakan untuk mengevaluasi banyak kasus dengan lebih sederhana.
+Perulangan
+For
+php
+Copy code
+for ($i = 0; $i < 10; $i++) {
+    echo $i;
+}
+Digunakan untuk iterasi dengan batasan tertentu.
+While
+php
+Copy code
+while ($i < 10) {
+    echo $i;
+    $i++;
+}
+Mengevaluasi kondisi sebelum iterasi.
+Do While
+php
+Copy code
+do {
+    echo $i;
+    $i++;
+} while ($i < 10);
+Mengevaluasi kondisi setelah iterasi.
